@@ -1,0 +1,36 @@
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>/webapp</directory>
+			<outputDirectory>/webapp</outputDirectory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>/resources</directory>
+			<outputDirectory>/resources</outputDirectory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>		
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory />
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<includes>
+				<include>logback.xml</include>
+				<include>startup.bat</include>
+			</includes>
+		</fileSet>	
+	</fileSets>
+</assembly>
