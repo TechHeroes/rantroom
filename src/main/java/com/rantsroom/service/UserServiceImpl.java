@@ -1,5 +1,9 @@
 package com.rantsroom.service;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -8,10 +12,6 @@ import com.rantsroom.model.Role;
 import com.rantsroom.model.User;
 import com.rantsroom.repository.RoleRepository;
 import com.rantsroom.repository.UserRepository;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,7 +23,11 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     
-    public UserServiceImpl(UserRepository userRepository,
+    public UserServiceImpl() {
+		super();
+	}
+
+	public UserServiceImpl(UserRepository userRepository,
                        RoleRepository roleRepository,
                        BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
