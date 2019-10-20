@@ -7,18 +7,18 @@
 	<fileSets>
 		<fileSet>
 			<directory>/webapp</directory>
-			<outputDirectory>/webapp</outputDirectory>
+			<outputDirectory />
 			<includes>
-				<include>**/*</include>
+				<include>*.*</include>
 			</includes>
 		</fileSet>
-		<fileSet>
+		<!-- <fileSet>
 			<directory>/resources</directory>
 			<outputDirectory>/resources</outputDirectory>
 			<includes>
 				<include>**/*</include>
 			</includes>
-		</fileSet>		
+		</fileSet> -->		
 		<fileSet>
 			<directory>${project.build.directory}</directory>
 			<outputDirectory />
