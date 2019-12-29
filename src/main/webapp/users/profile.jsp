@@ -130,9 +130,9 @@
 	       			<br><p style="color: green; font-size:18px; text-align: center;">${deleterant}</p>	       		
 	           	</c:if> 	                	
 	              <div class="row clearfix profile">
-	                <div class="col-sm-4" style="margin:14px 0">
+	                <div class="col-sm-4" style="margin:14px 0">	                
 						<c:choose>
-					    	<c:when test="${user.getUserProfile().getFileName()!=null}">
+					    	<c:when test="${contextPath}/uploads/${user.getUserProfile().getFileName()!=null}">
 				    			<img src="${contextPath}/uploads/${user.getUserProfile().getFileName()}" class="avatar img-circle" alt="avatar" height="150" width="150">						    		
 					    	</c:when>
 					    	<c:otherwise>

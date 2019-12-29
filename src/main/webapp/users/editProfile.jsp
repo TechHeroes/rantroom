@@ -147,7 +147,7 @@
 					    	</c:when>
 					    	<c:otherwise>
 					    		<c:choose>
-					    			<c:when test="${userForm.getUserProfile().getFileName()!=null}">
+					    			<c:when test="${contextPath}/uploads/${user.getUserProfile().getFileName()!=null}">
 					    				<img src="${contextPath}/uploads/${userForm.getUserProfile().getFileName()}" class="avatar img-circle" alt="avatar" height="150" width="150"><br><br>
 					    			</c:when>
 					    			<c:otherwise>
@@ -156,8 +156,7 @@
 					    		</c:choose>
 					    	</c:otherwise>
 					    </c:choose>
-				      	<form:form method="POST" action="/uploadphoto" enctype="multipart/form-data">				      		
-						    <!-- <input type="file" name="profilePhoto" /><br/> -->		      
+				      	<form:form method="POST" action="/uploadphoto" enctype="multipart/form-data">
                             <input type="file" name="profilePhoto"></input><br/>
 						    <input type="submit" value="Submit" class="btn btn-primary rantsubmit"/>
 						</form:form>
