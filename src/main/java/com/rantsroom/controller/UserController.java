@@ -123,8 +123,10 @@ public class UserController {
 		}    	
     	model.addAttribute("user", user);    	
     	List<Rant> rants = rantService.findAll();
-    	for(Rant rant:rants)
+    	/*for(Rant rant:rants) {    		
     		logger.info("RANT DETAILS: "+rant.toString());
+    		
+    	}*/
     	model.addAttribute("rants", rants);
     	
         return "home";

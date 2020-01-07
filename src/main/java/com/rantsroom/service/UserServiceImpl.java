@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.rantsroom.model.Rant;
 import com.rantsroom.model.Role;
 import com.rantsroom.model.User;
 import com.rantsroom.repository.RoleRepository;
@@ -69,5 +70,5 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getOne(Long Id) {
 		return userRepository.getOne(Id);
-	}
+	}	
 }

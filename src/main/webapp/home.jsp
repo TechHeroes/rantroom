@@ -92,7 +92,7 @@
 	                                            <li class="dropdown">
                                           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${user.getUsername()}<span class="caret"></span></a>
                                             			<ul class="dropdown-menu sublist" role="menu">
-		                                                    <li><a href="${contextPath}/users/profile">Profile</a></li>		                                                    
+		                                                    <li><a href="${contextPath}/users/profile/${user.getUsername()}">Profile</a></li>		                                                    
 		                                                    <li><a href="${contextPath}/users/profile/settings">Settings</a></li>
 		                                                    <li><a onclick="document.forms['logoutForm'].submit()">Logout</a></li> 
                                             			</ul>
@@ -138,9 +138,13 @@
                                                     <h3 class="page-header" style="text-align: justify">
                                                     	<a href="${contextPath}/rant/${rantData.getId()}">${rantData.getRantTitle()}</a>
                                                     </h3>
-                                                    <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 250)}" />
+                                                    <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 160)}" />
                                                     <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
                                                 </div><!-- list-content -->
+                                                <h5 class="page-header" style="text-align: justify">
+                                                	<a href="/rant/1">${rant.getUser().getUsername()}</a>
+                                                </h5>
+                                                <p><i class="fa fa-quote-left"></i> &nbsp;06/01/2019 19:55PM</p>
                                             </div><!--list-item -->								
 		                                  </div><!--list -->
 		                            </c:forEach> 
@@ -173,11 +177,7 @@
 
                   	<a href="#" class="icon-circle tw" target="_blank">
                     	<img class="logo" alt="Twitter" src="${contextPath}/resources/social/twitter_transparent-39f60ddc31bce0d3e3d6ae72af7fbe74dc95e01b7d7a6f66cc38efabda3bb6da.png" />
-                  	</a>
-
-                  	<a href="#" class="icon-circle gl" target="_blank">
-                    	<img class="logo" alt="Google Plus" src="${contextPath}/resources/social/gplus_transparent-fab632559c47bada047b0ff2cb7b8880a10836d08db04c7cdae2e3d3abe474e1.png" />
-                  	</a>
+                  	</a>                 	
 
                     <a href="#" class="icon-circle pt" target="_blank">
                     	<img class="logo" alt="Pinterest" src="${contextPath}/resources/social/pinterest_transparent-a58a9baa98ec9a2e4fed6d4ab7ffdb69bc607c82649a486544b2b5dab03364ef.png" />

@@ -13,6 +13,7 @@ import com.rantsroom.model.User;
 public interface RantRepository extends JpaRepository<Rant, Long> {
 	
 	Rant findByRantTitle(String rantTitle);
+	//User findByRant(Rant rant);
 	List<Rant> findByUser(User user);
 	List<Rant> findAll();
 	Optional<Rant> findById(Long Id);

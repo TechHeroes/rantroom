@@ -14,4 +14,5 @@ public interface RantService {
 	List<Rant> findByUser(User user);
 	List<Rant> findAll();
 	Optional<Rant> findById(Long Id);
+	//User findByRant(Rant rant);
 }

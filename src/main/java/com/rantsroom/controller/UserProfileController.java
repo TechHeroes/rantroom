@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,10 +48,18 @@ public class UserProfileController {
   //Save the uploaded file to this folder
     public static String UPLOADED_FOLDER = System.getProperty("user.dir") + "\\src\\main\\webapp\\uploads";
     
-    @RequestMapping(value = "/users/profile", method = RequestMethod.GET)
-    public String welcome(Model model, Principal principal) {
-    		
-    	User user = userService.findByUsername(principal.getName());
+    
+   /* @RequestMapping(value = "/fetch/{id}", method = RequestMethod.GET)
+    String getDynamicUriValue(@PathVariable String id) {
+        System.out.println("ID is " + id);
+        return "Dynamic URI parameter fetched";
+    }*/
+    @RequestMapping(value = "/users/profile/{username}", method = RequestMethod.GET)
+    public String welcome(Model model, Principal principal, @PathVariable String username) {
+    	
+    	System.out.println("User Id is: "+ username);
+    	//User user = userService.findByUsername(principal.getName());
+    	User user = userService.findByUsername(username);
     	model.addAttribute("user", user);
     	List<Rant> rants = rantServiceImpl.findAllById(user.getId());
     	if(rants.isEmpty())
