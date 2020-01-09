@@ -1,6 +1,7 @@
 package com.rantsroom.controller;
 
 import java.security.Principal;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -49,9 +50,12 @@ public class UserController {
     private UserValidator userValidator;
     @Autowired
     private RantService rantService;
+    
+    public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
+        model.addAttribute("year", currentYear);
         return "registration";
     }
 
@@ -86,20 +90,22 @@ public class UserController {
     		String delete, Principal principal) {
     	
     	User user = null;
+    	model.addAttribute("year", currentYear);
 		try {
 			user = userService.findByUsername(principal.getName());
 		} catch (Exception e) {
 			logger.info("No user found");
 		}
-    	if (error != null)
-            model.addAttribute("error", "Your username/password is invalid.");
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-        if(delete != null) {
+    	if (error != null) 
+            model.addAttribute("error", "Your username/password is invalid.");    		
+    	
+        if (logout != null) 
+            model.addAttribute("message", "You have been logged out successfully.");            
+        
+        if(delete != null) { 
         	userRepository.delete(user);
-        	model.addAttribute("message", "Your account has been deleted successfully.");
-        }        
-
+        	model.addAttribute("message", "Your account has been deleted successfully.");        	               
+        }
         try {
 			if(!(user.isEmail_confirmed()))
 				model.addAttribute("error", "Oops! Looks like you haven't verified your email yet.Please check your mail box.");
@@ -123,12 +129,9 @@ public class UserController {
 		}    	
     	model.addAttribute("user", user);    	
     	List<Rant> rants = rantService.findAll();
-    	for(Rant rant:rants) {    		
-    		logger.info("RANT OWNER: "+ rant.getUser().getUsername());
-    		logger.info("RANT MODIFIED DATE: "+rant.getUpdatedAt());
-    		    		
-    	}
+		
     	model.addAttribute("rants", rants);
+    	model.addAttribute("year", currentYear);    	
     	
         return "home";
     }

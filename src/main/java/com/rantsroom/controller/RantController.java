@@ -51,7 +51,8 @@ public class RantController {
 			logger.error("No user logged in");
 		}
     	model.addAttribute("user", user);
-    	model.addAttribute("rantForm", new Rant());    	
+    	model.addAttribute("rantForm", new Rant());
+    	model.addAttribute("year", UserController.currentYear);
         return "users/rant";        		
     }
     

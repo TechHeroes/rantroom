@@ -60,7 +60,7 @@ public class UserProfileController {
     	if(rants.isEmpty())
     		logger.info("No rants found");
     	model.addAttribute("rants", rants);
-        
+    	model.addAttribute("year", UserController.currentYear);
         return "users/profile";
     }
     
@@ -71,6 +71,7 @@ public class UserProfileController {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("userForm",user );
 		model.addAttribute("userProfileForm", new UserProfile());
+		model.addAttribute("year", UserController.currentYear);
 		return "users/editProfile";
     }
 	
@@ -154,7 +155,8 @@ public class UserProfileController {
 		
 		User user = userService.findByUsername(principal.getName());    	
 		model.addAttribute("user", user);
-		model.addAttribute("info", "This part is under construction. Please check back later.");    	
+		model.addAttribute("info", "This part is under construction. Please check back later.");
+		model.addAttribute("year", UserController.currentYear);
 		
 		return "users/profile";
 	}

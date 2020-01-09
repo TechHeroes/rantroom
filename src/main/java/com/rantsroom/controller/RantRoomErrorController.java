@@ -20,6 +20,7 @@ public class RantRoomErrorController implements ErrorController  {
     public String handleError(HttpServletRequest request, Model model) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
          
+        model.addAttribute("year", UserController.currentYear);
         if (status != null) {
             Integer statusCode = Integer.valueOf(status.toString());
          
