@@ -164,7 +164,7 @@ public class UserProfileController {
 		user.setFirstname(userForm.getFirstname());
 		user.setLastname(userForm.getLastname());
 		user.setPassword(userForm.getPassword());
-		user.setPasswordConfirm(userForm.getPassword());
+		//user.setPasswordConfirm(userForm.getPassword());
 	}
 	
 	

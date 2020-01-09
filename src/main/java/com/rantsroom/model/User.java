@@ -19,7 +19,7 @@ public class User extends AuditModel{
     private String firstname;
     private String lastname;
     private String password;
-    private String passwordConfirm;
+    //private String passwordConfirm;
     private String email;
     private boolean active;
     private boolean email_confirmed;
@@ -92,15 +92,12 @@ public class User extends AuditModel{
         this.password = password;
     }
 
-    @Transient
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    } 
-
+	/*
+	 * @Transient public String getPasswordConfirm() { return passwordConfirm; }
+	 * 
+	 * public void setPasswordConfirm(String passwordConfirm) { this.passwordConfirm
+	 * = passwordConfirm; }
+	 */
 	public boolean isEmail_confirmed() {
 		return email_confirmed;
 	}

@@ -154,16 +154,7 @@
                                             <form:errors path="password"></form:errors>
                                         </div>
                                     </spring:bind>
-                                </div>
-                                <div>
-                                    <label>CONFIRM PASSWORD:</label>
-                                    <spring:bind path="passwordConfirm">
-                                        <div class="form-group ${status.error ? 'has-error' : ''}">
-                                            <form:input type="password" path="passwordConfirm" class="form-control"></form:input>
-                                            <form:errors path="passwordConfirm"></form:errors>
-                                        </div>
-                                    </spring:bind>
-                                </div>    
+                                </div>                                   
                                 <button type="submit" class="btn btn-primary">Sign up</button>
                             </form:form>                            
                         </div><!--log-in-form-->
