@@ -55,7 +55,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                               </button>
-                              <a class="navbar-brand" href="../home"><img class="logo" alt="RantRoom logo" src="${contextPath}/resources/images/rantroomlogo_bl.png" /></a>
+                              <a class="navbar-brand" href="${contextPath}/home"><img class="logo" alt="RantRoom logo" src="${contextPath}/resources/images/rantroomlogo_bl.png" /></a>
                             </div>
                         </div>    
                         <div class="col-sm-9">
@@ -93,7 +93,7 @@
 	                                            <li class="dropdown">
                                           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${user.getUsername()}<span class="caret"></span></a>
                                             			<ul class="dropdown-menu sublist" role="menu">
-		                                                    <li><a href="${contextPath}/users/profile">Profile</a></li>		                                                    
+		                                                    <li><a href="${contextPath}/users/profile/${user.getUsername()}">Profile</a></li>		                                                    
 		                                                    <li><a href="${contextPath}/users/profile/settings">Settings</a></li>
 		                                                    <li><a onclick="document.forms['logoutForm'].submit()">Logout</a></li> 
                                             			</ul>

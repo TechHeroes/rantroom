@@ -49,11 +49,6 @@ public class UserProfileController {
     public static String UPLOADED_FOLDER = System.getProperty("user.dir") + "\\src\\main\\webapp\\uploads";
     
     
-   /* @RequestMapping(value = "/fetch/{id}", method = RequestMethod.GET)
-    String getDynamicUriValue(@PathVariable String id) {
-        System.out.println("ID is " + id);
-        return "Dynamic URI parameter fetched";
-    }*/
     @RequestMapping(value = "/users/profile/{username}", method = RequestMethod.GET)
     public String welcome(Model model, Principal principal, @PathVariable String username) {
     	
@@ -234,3 +229,8 @@ public static void main(String[] args) throws UnsupportedEncodingException {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
+/* @RequestMapping(value = "/fetch/{id}", method = RequestMethod.GET)
+    String getDynamicUriValue(@PathVariable String id) {
+        System.out.println("ID is " + id);
+        return "Dynamic URI parameter fetched";
+    }*/

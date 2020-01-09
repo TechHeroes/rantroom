@@ -97,7 +97,7 @@
 	                                            <li class="dropdown">
                                           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${user.getUsername()}<span class="caret"></span></a>
                                            			<ul class="dropdown-menu sublist" role="menu">
-	                                                    <li><a href="${contextPath}/users/profile">Profile</a></li>		                                                    
+	                                                    <li><a href="${contextPath}/users/profile/${user.getUsername()}">Profile</a></li>		                                                    
 	                                                    <li><a href="${contextPath}/users/profile/settings">Settings</a></li>
 	                                                    <li><a onclick="document.forms['logoutForm'].submit()">Logout</a></li> 
                                            			</ul>
