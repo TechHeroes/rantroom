@@ -8,6 +8,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @MappedSuperclass
@@ -17,29 +20,31 @@ import java.util.Date;
         allowGetters = true
 )
 public abstract class AuditModel implements Serializable {
-    @Temporal(TemporalType.TIMESTAMP)
+	
+	
+	transient DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM dd yyyy 'at' hh:mm a");
+	    
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
     @LastModifiedDate
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getCreatedAt() {
+        return formatter.format(createdAt);
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public String getUpdatedAt() {
+    	return formatter.format(updatedAt);
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

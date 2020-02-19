@@ -141,11 +141,13 @@
                                                     <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 160)}" />
                                                     <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
                                                 </div><!-- list-content -->
-                                                <p>
-                                                	<a href="${contextPath}/users/profile/${rantData.getUser().getUsername()}">
-                                                	${rantData.getUser().getUsername()}</a>
-                                                </p>
-                                                <p>${rantData.getUpdatedAt()}</p>
+                                                <div class="rantDate">
+	                                                <p>
+	                                                	<a href="${contextPath}/users/profile/${rantData.getUser().getUsername()}">
+	                                                	${rantData.getUser().getUsername()}</a>
+	                                                </p>
+	                                                <p>${rantData.getUpdatedAt()}</p>                                                
+                                                </div>
                                             </div><!--list-item -->								
 		                                  </div><!--list -->
 		                            </c:forEach> 

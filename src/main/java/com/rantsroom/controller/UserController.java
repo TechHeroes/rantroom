@@ -1,21 +1,16 @@
 package com.rantsroom.controller;
 
 import java.security.Principal;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.security.access.method.P;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,8 +25,6 @@ import com.rantsroom.model.User;
 import com.rantsroom.repository.UserRepository;
 import com.rantsroom.service.EmailService;
 import com.rantsroom.service.RantService;
-import com.rantsroom.service.RantServiceImpl;
-import com.rantsroom.service.SecurityService;
 import com.rantsroom.service.UserService;
 import com.rantsroom.validator.UserValidator;
 
@@ -50,6 +43,8 @@ public class UserController {
     private UserValidator userValidator;
     @Autowired
     private RantService rantService;
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     
     public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -130,6 +125,7 @@ public class UserController {
     	model.addAttribute("user", user);    	
     	List<Rant> rants = rantService.findAll();
 		
+    	
     	model.addAttribute("rants", rants);
     	model.addAttribute("year", currentYear);    	
     	
@@ -177,51 +173,3 @@ public class UserController {
 	}
 
 }
-
-
-
-
-/*@RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@ModelAttribute("userLogin") User userLogin, String error, Model model) {
-		
-    	//System.out.println("LOGIN: POST");
-		System.out.println("USER Object inside login:"+userLogin.toString());
-		boolean loginFlag = true;
-        if (error != null) {
-            model.addAttribute("error", "Your username and password is invalid.");
-            loginFlag = false;
-        }
-        
-        else if(!(userLogin.isEmail_confirmed())) {
-        	model.addAttribute("error", "Oops! Looks like you haven't verified your email yet.Please check your mail box.");
-        	loginFlag = false;
-        }        
-        	
-        if(loginFlag) {
-        	model.addAttribute("firstname", userLogin.getFirstname());
-        	//securityService.autologin(userLogin.getUsername(), userLogin.getPassword());
-            return "redirect:/welcome";
-        }        	
-        else
-        	return "login";
-    }*/
-/*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		try {
- *//**
- * Finding logged in User: 1
- *//*
-			currentUser = auth.getName();//securityService.findLoggedInUsername();
-			System.out.println("CURRENT USER IN PROFILE 1: "+currentUser);
-			}catch (NullPointerException e) {
-				logger.info("1. No user logged in");
-			}
-		try {
-  *//**
-  * Finding logged in User: 2
-  *//*
-			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			currentUser = user.getUsername();
-			System.out.println("CURRENT USER IN PROFILE 2: "+currentUser);
-			}catch (Exception e) {
-				logger.info("2. No user logged in");
-			}*/

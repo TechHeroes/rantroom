@@ -320,6 +320,11 @@ h5 {
 .list-content .vid {
 	margin-bottom: 20px;
 }
+.rantDate{
+	bottom: 8px;
+	position: absolute;
+	margin-left: 10px;
+}
 .rant-details {
     border: 1px solid #eeeeee;
     background: #ffffff;

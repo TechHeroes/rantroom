@@ -96,7 +96,7 @@ public class UserProfileController {
 	    		logger.info("No rants found");
 			model.addAttribute("rants", rants);
 			
-			return "redirect:/users/profile";
+			return "redirect:/users/profile/"+user.getUsername();
 		}		
 	}
 	

@@ -12,14 +12,17 @@ import java.util.Set;
 @Entity
 public class User extends AuditModel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;	
     private String username;
     private String firstname;
     private String lastname;
-    private String password;
-    //private String passwordConfirm;
+    private String password;    
     private String email;
     private boolean active;
     private boolean email_confirmed;
@@ -91,13 +94,7 @@ public class User extends AuditModel{
     public void setPassword(String password) {
         this.password = password;
     }
-
-	/*
-	 * @Transient public String getPasswordConfirm() { return passwordConfirm; }
-	 * 
-	 * public void setPasswordConfirm(String passwordConfirm) { this.passwordConfirm
-	 * = passwordConfirm; }
-	 */
+	
 	public boolean isEmail_confirmed() {
 		return email_confirmed;
 	}
