@@ -117,8 +117,8 @@ public class UserController {
     	 * Finding logged in User
     	 */
     	try {
+    		logger.info("CURRENT LOGGED-IN USER: ",principal.getName());
     		user = userService.findByUsername(principal.getName());			
-			logger.info("CURRENT LOGGED-IN USER: ",user.getUsername());
 		} catch (Exception e) {
 			logger.info("No user logged in");
 		}    	

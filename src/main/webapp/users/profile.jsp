@@ -164,7 +164,7 @@
 	                <div class="col-sm-4">
 	                   <ul class="nav navbar-nav navbar-right menu menu-right">
 	                       <li><a href="${contextPath}/users/rant" class="btn">Create Rant</a></li>
-	                       <li><a href = "${contextPath}/users/editProfile" class="btn">Edit Profile</a></li>
+	                       <li><a href = "${contextPath}/users/editProfile/${user.getUsername()}" class="btn">Edit Profile</a></li>
 	                   </ul>
 	                </div>    
 	              </div>    
@@ -185,6 +185,9 @@
 			                                       <c:set var="shortDesc" value="${fn:substring(rant.getRantDesc(), 0, 150)}" />
 			                                       <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
 			                                   </div><!-- list-content -->
+			                                   <div class="rantDate">
+	                                           		<p style="font-style: italic;">${rant.getUpdatedAt()}</p>                                                
+                                               </div>
 			                               </div><!--list-item -->								
 			                           </div><!--list -->                                 
 			                         </c:forEach> 

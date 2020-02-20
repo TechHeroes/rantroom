@@ -65,19 +65,19 @@ public class UserProfileController {
     }
     
 	
-	@RequestMapping(value = "/users/editProfile", method = RequestMethod.GET)
-    public String editProfile(Model model,Principal principal) {
+	@RequestMapping(value = "/users/editProfile/{username}", method = RequestMethod.GET)
+    public String editProfile(Model model, @PathVariable String username) {
 		
-		User user = userService.findByUsername(principal.getName());
+		User user = userService.findByUsername(username);
 		model.addAttribute("userForm",user );
 		model.addAttribute("userProfileForm", new UserProfile());
 		model.addAttribute("year", UserController.currentYear);
 		return "users/editProfile";
     }
 	
-	@RequestMapping(value = "/users/editProfile", method = RequestMethod.POST)
+	@RequestMapping(value = "/users/editProfile/{username}", method = RequestMethod.POST)
     public String editProfile(@ModelAttribute("userForm") User userForm,RedirectAttributes redirectAttributes,
-    		BindingResult bindingResult, Model model, HttpServletRequest request, Principal principal) {		
+    		BindingResult bindingResult, Model model, HttpServletRequest request, @PathVariable String username) {		
 		
 		userValidator.validateUpdate(userForm, bindingResult);
 		if (bindingResult.hasErrors()) {
@@ -85,7 +85,7 @@ public class UserProfileController {
         }
 		else {
 			
-			User user = userService.findByUsername(principal.getName());//userService.findById(Id).get();
+			User user = userService.findByUsername(username);//userService.findById(Id).get();
 			updateUser(user, userForm);			
 			userService.save(user);
 			redirectAttributes.addFlashAttribute("profileUpdated","Your profile is updated succesfully");
@@ -109,12 +109,12 @@ public class UserProfileController {
 		if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("upload_status", "Please select a file to upload");
             model.addAttribute("userForm", user);
-            return "redirect:users/editProfile";
+            return "redirect:users/editProfile/"+principal.getName();
         }
 		if(!file.getContentType().equals("image/jpeg")) {
 			redirectAttributes.addFlashAttribute("upload_status", "Invalid file selected. Please select a JPG/PNG File");
             model.addAttribute("userForm", user);
-            return "redirect:users/editProfile";
+            return "redirect:users/editProfile/"+principal.getName();
 		}
 		try {
 				logger.info("UPLOADED FILE TYPE: "+file.getContentType());
@@ -146,7 +146,7 @@ public class UserProfileController {
 				e.printStackTrace();
 			}
 			model.addAttribute("userForm", userService.findByUsername(principal.getName()));
-			return "redirect:users/editProfile";
+			return "redirect:users/editProfile/"+principal.getName();
 		
     }
 

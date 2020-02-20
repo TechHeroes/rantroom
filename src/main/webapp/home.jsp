@@ -146,7 +146,7 @@
 	                                                	<a href="${contextPath}/users/profile/${rantData.getUser().getUsername()}">
 	                                                	${rantData.getUser().getUsername()}</a>
 	                                                </p>
-	                                                <p>${rantData.getUpdatedAt()}</p>                                                
+	                                                <p style="font-style: italic;">${rantData.getUpdatedAt()}</p>                                                
                                                 </div>
                                             </div><!--list-item -->								
 		                                  </div><!--list -->
