@@ -91,9 +91,9 @@
                                       	<c:choose>
                                       		<c:when test="${user != null}">
 	                                            <li class="dropdown">
-                                          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${user.getUsername()}<span class="caret"></span></a>
+                                          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${loggedInUser}<span class="caret"></span></a>
                                             			<ul class="dropdown-menu sublist" role="menu">
-		                                                    <li><a href="${contextPath}/users/profile/${user.getUsername()}">Profile</a></li>		                                                    
+		                                                    <li><a href="${contextPath}/users/profile/${loggedInUser}">Profile</a></li>		                                                    
 		                                                    <li><a href="${contextPath}/users/profile/settings">Settings</a></li>
 		                                                    <li><a onclick="document.forms['logoutForm'].submit()">Logout</a></li> 
                                             			</ul>
@@ -110,11 +110,7 @@
 	                                            <li><a href="${contextPath}/registration">Sign Up</a></li>
                                         	</c:otherwise>
                                         </c:choose>	    
-                                      </ul>                                       
-                                      <!-- <ul class="nav navbar-nav navbar-right">
-                                            <li><a data-toggle="modal" data-target="#myModal" href="#">Delete Account</a></li>
-                                           <li><a class="home-links" href="${contextPath}/registration">Sign Up</a></li>
-                                      </ul> -->     
+                                      </ul> 
                                 </div><!--inner col-sm-4--> 
                             </div><!--inner-row-->
                         </div><!--outer col-sm-9-->   
@@ -160,13 +156,25 @@
 				                </div><!--name_group-->				              		
 							</div><!--_two-->
 						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${authFlag == 1}">
+			                <div class="col-sm-4">
+			                   <ul class="nav navbar-nav navbar-right menu menu-right">
+			                       <li><a href="${contextPath}/users/rant" class="btn">Create Rant</a></li>
+			                       <li><a href = "${contextPath}/users/editProfile/${user.getUsername()}" class="btn">Edit Profile</a></li>
+			                   </ul>
+			                </div>
+						</c:when>
+						<c:otherwise>
+							<div class="col-sm-4">
+			                   <ul class="nav navbar-nav navbar-right menu menu-right">
+			                       <li><a href="#" class="btn">Follow</a></li>
+			                       <li><a href = "#" class="btn">Block</a></li>
+			                   </ul>
+			                </div>
+						</c:otherwise>
 					</c:choose>		
-	                <div class="col-sm-4">
-	                   <ul class="nav navbar-nav navbar-right menu menu-right">
-	                       <li><a href="${contextPath}/users/rant" class="btn">Create Rant</a></li>
-	                       <li><a href = "${contextPath}/users/editProfile/${user.getUsername()}" class="btn">Edit Profile</a></li>
-	                   </ul>
-	                </div>    
 	              </div>    
 	              
 	              <div class="row">

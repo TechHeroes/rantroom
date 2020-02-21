@@ -167,7 +167,7 @@
                             <div class="col-sm-6">
                             	<c:choose>
                             		<c:when test="${user != null}">
-		                                <h3><a style="text-align: left;font-size: 16px" href="${contextPath}/users/profile" > &lt;&lt;Back</a></h3>                            			
+		                                <h3><a style="text-align: left;font-size: 16px" href="${contextPath}/users/profile/${user.getUsername()}" > &lt;&lt;Back</a></h3>                            			
                             		</c:when>
                             		<c:otherwise>
                             			<h3><a style="text-align: left;font-size: 16px" href="${contextPath}/home" > &lt;&lt;Back</a></h3>

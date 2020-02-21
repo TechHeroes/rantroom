@@ -86,7 +86,7 @@ public class RantController {
 		} catch (NullPointerException e) {
 			logger.error("No user logged in");
 		}
-    	model.addAttribute("user", user);
+    	model.addAttribute("user", user);    	
     	Optional<Rant> rant = rantService.findById(rantId);
 		model.addAttribute("rantDesc", rant.get());
 		return "/users/rant";

@@ -52,15 +52,26 @@ public class UserProfileController {
     @RequestMapping(value = "/users/profile/{username}", method = RequestMethod.GET)
     public String welcome(Model model, Principal principal, @PathVariable String username) {
     	
-    	System.out.println("User Id is: "+ username);
-    	//User user = userService.findByUsername(principal.getName());
+    	System.out.println("Username accessed: "+ username);
+    	int authFlag = 0;
+    	/**
+    	 * Finding logged in User
+    	 */
+    	String currentLoggedInUser = principal.getName();
+    	System.out.println("Username loggedIn: "+ currentLoggedInUser);
+    	/**
+    	 * checking if profile accessed is same as logged in user or not
+    	 */
+    	if(username.equalsIgnoreCase(currentLoggedInUser))
+    		authFlag = 1;
     	User user = userService.findByUsername(username);
     	model.addAttribute("user", user);
     	List<Rant> rants = rantServiceImpl.findAllById(user.getId());
-    	if(rants.isEmpty())
-    		logger.info("No rants found");
+    	
     	model.addAttribute("rants", rants);
     	model.addAttribute("year", UserController.currentYear);
+    	model.addAttribute("loggedInUser", currentLoggedInUser);    	
+    	model.addAttribute("authFlag", authFlag);
         return "users/profile";
     }
     
