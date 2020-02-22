@@ -136,7 +136,8 @@
                                             <div class="list-item" style="">
                                                 <div class="list-content">
                                                     <h3 class="page-header" style="text-align: justify">
-                                                    	<a href="${contextPath}/rant/${rantData.getId()}">${rantData.getRantTitle()}</a>
+                                                    	<c:set var="shortTitle" value="${fn:substring(rantData.getRantTitle(), 0, 30)}" />
+                                                    	<a href="${contextPath}/rant/${rantData.getId()}">${shortTitle}..</a>
                                                     </h3>
                                                     <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 160)}" />
                                                     <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>

@@ -189,7 +189,10 @@
 			                           <div class="list col-sm-6 col-md-6">
 			                               <div class="list-item" style="">
 			                                   <div class="list-content">
-			                                       <h3><a href="${contextPath}/rant/${rant.getId()}">${rant.getRantTitle()}</a></h3>
+			                                       <h3>
+			                                       		<c:set var="shortTitle" value="${fn:substring(rant.getRantTitle(), 0, 25)}" />
+                                                    	<a href="${contextPath}/rant/${rant.getId()}">${shortTitle}..</a>
+			                                       </h3>
 			                                       <c:set var="shortDesc" value="${fn:substring(rant.getRantDesc(), 0, 150)}" />
 			                                       <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
 			                                   </div><!-- list-content -->
