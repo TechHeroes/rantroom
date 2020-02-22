@@ -169,8 +169,8 @@
 						<c:otherwise>
 							<div class="col-sm-4">
 			                   <ul class="nav navbar-nav navbar-right menu menu-right">
-			                       <li><a href="#" class="btn">Follow</a></li>
-			                       <li><a href = "#" class="btn">Block</a></li>
+			                       <li><a href="#" class="btn" title="This feature is under development">Follow</a></li>
+			                       <li><a href = "#" class="btn" title="This feature is under development">Block</a></li>
 			                   </ul>
 			                </div>
 						</c:otherwise>

@@ -57,20 +57,22 @@ public class UserProfileController {
     	/**
     	 * Finding logged in User
     	 */
-    	String currentLoggedInUser = principal.getName();
-    	System.out.println("Username loggedIn: "+ currentLoggedInUser);
+    	String currentLoggedInUsername = principal.getName();
+    	System.out.println("Username loggedIn: "+ currentLoggedInUsername);    	
+    	long loggedInUser_Id = userService.findByUsername(currentLoggedInUsername).getId();
     	/**
     	 * checking if profile accessed is same as logged in user or not
     	 */
-    	if(username.equalsIgnoreCase(currentLoggedInUser))
+    	User visitingUser = userService.findByUsername(username);
+    	long visitingUser_Id = visitingUser.getId();
+    	if(visitingUser_Id == loggedInUser_Id)
     		authFlag = 1;
-    	User user = userService.findByUsername(username);
-    	model.addAttribute("user", user);
-    	List<Rant> rants = rantServiceImpl.findAllById(user.getId());
+    	model.addAttribute("user", visitingUser);
+    	List<Rant> rants = rantServiceImpl.findAllById(visitingUser.getId());
     	
     	model.addAttribute("rants", rants);
     	model.addAttribute("year", UserController.currentYear);
-    	model.addAttribute("loggedInUser", currentLoggedInUser);    	
+    	model.addAttribute("loggedInUser", currentLoggedInUsername);    	
     	model.addAttribute("authFlag", authFlag);
         return "users/profile";
     }
