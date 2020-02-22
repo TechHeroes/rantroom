@@ -211,8 +211,12 @@
                         </div>                            
                        	<div class="form-group">
 				          <label class="col-md-3"></label>
-				          <div class="col-md-8">
+				          <div class="col-md-2">
 				            <button type="submit" class="btn btn-primary">Save Changes</button>						              						              
+				          </div>
+				          <label class="col-md-2"></label>
+				          <div class="col-md-2">				          	
+				          	<a href = "${contextPath}/users/profile/${userForm.getUsername()}" class="btn btn-primary">Cancel</a>				            						              						              
 				          </div>
 				       	</div>
                     </form:form>			      

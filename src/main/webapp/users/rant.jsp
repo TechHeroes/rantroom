@@ -125,7 +125,7 @@
                                 <h3 class="home-h2" style="text-align: left;"> Start Ranting Below</h3>
                             </div>
                             <div class="col-sm-3 col-sm-offset-3 menu">
-                                <p style="font-weight: 700"><a href="${contextPath}/users/profile">Cancel</a></p>
+                                <p style="font-weight: 700"><a href="${contextPath}/users/profile/${user.getUsername()}">Cancel</a></p>
                             </div>    
                         </div>
                         <div class="row">
