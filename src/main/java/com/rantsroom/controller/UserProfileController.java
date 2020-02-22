@@ -70,6 +70,7 @@ public class UserProfileController {
     	model.addAttribute("user", visitingUser);
     	List<Rant> rants = rantServiceImpl.findAllById(visitingUser.getId());
     	
+    	System.out.println("Profile pic file name: "+visitingUser.getUserProfile().getFileName());
     	model.addAttribute("rants", rants);
     	model.addAttribute("year", UserController.currentYear);
     	model.addAttribute("loggedInUser", currentLoggedInUsername);    	

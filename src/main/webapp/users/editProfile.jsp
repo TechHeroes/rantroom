@@ -147,7 +147,7 @@
 					    	</c:when>
 					    	<c:otherwise>
 					    		<c:choose>
-					    			<c:when test="${contextPath}/uploads/${user.getUserProfile().getFileName()!=null}">
+					    			<c:when test="${userForm.getUserProfile().getFileName()!=null}">
 					    				<img src="${contextPath}/uploads/${userForm.getUserProfile().getFileName()}" class="avatar img-circle" alt="avatar" height="150" width="150"><br><br>
 					    			</c:when>
 					    			<c:otherwise>

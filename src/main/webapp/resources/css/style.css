@@ -96,8 +96,7 @@ body{
     text-align: center
 }
 .login-form {
-/*    margin: 1em 0 2.5em;*/
-    
+  margin: 1em 0 2.5em;    
   background-color: #6E6E6E;
   background-image: none;
 /*  border: 1px solid #e5e6e7;*/
