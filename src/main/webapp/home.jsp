@@ -1,8 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> <%-- imports function tags from JSTL, prefix "fn"--%>
-<%-- <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %> --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -12,8 +10,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="Welcome to RantRoom. A public forum for people to rant about anything under the sun. 
+        	Here, you can speak your heart out with complete anonymity. So, what are you waiting for? Sign up instantly and start ranting.">
+        <meta name="author" content="Saad Khan">
 
         <title>RantRoom | Home</title>
 
@@ -135,11 +134,11 @@
                                         <div class="list col-sm-6 col-md-6">
                                             <div class="list-item" style="">
                                                 <div class="list-content">
-                                                    <h3 class="page-header" style="text-align: justify">
+                                                    <h3 class="page-header" id="rantTitle">
                                                     	<c:set var="shortTitle" value="${fn:substring(rantData.getRantTitle(), 0, 30)}" />
-                                                    	<a href="${contextPath}/rant/${rantData.getId()}">${shortTitle}..</a>
+                                                    	<a href="${contextPath}/rant/${rantData.getId()}">${shortTitle}</a>
                                                     </h3>
-                                                    <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 160)}" />
+                                                    <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 130)}" />
                                                     <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
                                                 </div><!-- list-content -->
                                                 <div class="rantDate">

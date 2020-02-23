@@ -259,8 +259,7 @@ h5 {
 /*---- rants-list -----*/
 
 .list {
-	display: block;
-    /*flex-wrap: wrap;*/
+	display: block;    
     margin: 20px 0;
     
 }
@@ -276,10 +275,8 @@ h5 {
 }
 
 .list-content {
-/*	border: 1px solid #eeeeee;*/
 	background: #fcfcfc;
 	display: block;
-	/*flex-direction: column;*/
 	padding: 10px 15px;
 	width: 100%;
 	transition: all 0.2s ease-in-out 0s;
@@ -289,20 +286,13 @@ h5 {
 .list-content a{
     text-decoration: none;
 }
-	.list-content:hover {
-/*		border: 1px solid #bc0333;*/
-/*		background: #ffffff;*/
-        /*-ms-transform: translateY(5px);*/ /* IE 9 */
-        /*-webkit-transform: translateY(5px);*/ /* Safari */
-        /*transform: translateY(5px);*/
-        }
-	
-	.list-content h3 { margin-top: 0; }
-	/*.list-content p { flex: 1 0 auto; }*/
-	.list-content img {
-		margin-bottom: 20px;
-		max-height: 250px;
-	}
+.list-content h3 { 
+	margin-top: 0; 
+}
+.list-content img {
+	margin-bottom: 20px;
+	max-height: 250px;
+}
 	
 .list-content.list-ad {
 	border: 1px solid transparent;
@@ -310,11 +300,11 @@ h5 {
 	opacity: 1;
 	text-align: center;
 }
-	.list-content.list-ad:hover {
-		border: 1px solid transparent;
-		background: transparent;
-		opacity: 0.85;
-	}
+.list-content.list-ad:hover {
+	border: 1px solid transparent;
+	background: transparent;
+	opacity: 0.85;
+}
 	
 .list-content .vid {
 	margin-bottom: 20px;
@@ -340,8 +330,13 @@ h5 {
     margin-top: 20px;
     margin-bottom: 0;
 }
-.rantTitle {
-    display: block;
+#rantTitle {
+	text-align: justify;
+	width: 230px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    /* display: block;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 8px;
     color: #3178B0;
@@ -349,7 +344,7 @@ h5 {
     position: relative;
     font-size: 20px;
     font-weight: 600;
-    text-transform: uppercase;
+    text-transform: uppercase; */
 }
 /* .well-sm {
     padding: 9px;
