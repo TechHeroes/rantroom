@@ -123,10 +123,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <h3 class="home-h2" style="text-align: left;"> Start Ranting Below</h3>
-                            </div>
-                            <div class="col-sm-3 col-sm-offset-3 menu">
-                                <p style="font-weight: 700"><a href="${contextPath}/users/profile/${user.getUsername()}">Cancel</a></p>
-                            </div>    
+                            </div>                               
                         </div>
                         <div class="row">
                             <div class="col-md-9">
@@ -153,8 +150,15 @@
                                             <form:textarea path="rantDesc" class="form-control" required="required" rows="12"></form:textarea>
                                             <form:errors path="rantDesc"></form:errors>                                    
                                         </spring:bind>    
+                                    </div>
+                                    <div class="row text-center">
+                                    	<div class="col-md-2">
+	                                    	<button type="submit" class="btn btn-primary rantsubmit">Submit Rant</button>
+                                    	</div>                                    
+	                                    <div class="col-md-2">				          	
+					          				<a href = "${contextPath}/users/profile/${user.getUsername()}" class="btn btn-primary">Cancel Rant</a>				            						              						              
+					          			</div>
                                     </div> 
-                                    <button type="submit" class="btn btn-primary rantsubmit">Submit Your Rant</button>
                                 </form:form>
                             </div><!--col-md-9 -->                                       
                         </div><!--row -->

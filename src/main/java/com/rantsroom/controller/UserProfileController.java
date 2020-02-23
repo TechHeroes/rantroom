@@ -58,7 +58,7 @@ public class UserProfileController {
     	 * Finding logged in User
     	 */
     	String currentLoggedInUsername = principal.getName();
-    	System.out.println("Username loggedIn: "+ currentLoggedInUsername);    	
+    	   	
     	long loggedInUser_Id = userService.findByUsername(currentLoggedInUsername).getId();
     	/**
     	 * checking if profile accessed is same as logged in user or not
@@ -166,8 +166,10 @@ public class UserProfileController {
 	@RequestMapping(value = "/users/profile/settings", method = RequestMethod.GET)
 	public String profileSettings(Model model,Principal principal) {
 		
-		User user = userService.findByUsername(principal.getName());    	
+		String currentLoggedInUsername = principal.getName();
+		User user = userService.findByUsername(currentLoggedInUsername);    	
 		model.addAttribute("user", user);
+		model.addAttribute("loggedInUser", currentLoggedInUsername);
 		model.addAttribute("info", "This part is under construction. Please check back later.");
 		model.addAttribute("year", UserController.currentYear);
 		
