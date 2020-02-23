@@ -143,7 +143,7 @@
                                                     <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
                                                 </div><!-- list-content -->
                                                 <div class="rantDate">
-	                                                <p>
+	                                                <p style="margin: 0 0 5px">
 	                                                	<a href="${contextPath}/users/profile/${rantData.getUser().getUsername()}">
 	                                                	${rantData.getUser().getUsername()}</a>
 	                                                </p>
