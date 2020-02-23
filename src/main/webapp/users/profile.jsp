@@ -125,7 +125,7 @@
 	       		<c:if test="${deleterant!=null }">
 	       			<br><p style="color: green; font-size:18px; text-align: center;">${deleterant}</p>	       		
 	           	</c:if> 	                	
-	              <div class="row clearfix profile">
+	              <div class="row clearfix text-center profile">
 	                <div class="col-sm-4" style="margin:14px 0">	                
 						<c:choose>
 					    	<c:when test="${user.getUserProfile().getFileName()!=null}">
