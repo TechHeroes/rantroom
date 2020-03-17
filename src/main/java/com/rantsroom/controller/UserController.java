@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -55,8 +57,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, 
-    		Model model) {
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult,
+    		Model model, HttpServletRequest request) {
     	
     	userValidator.validate(userForm, bindingResult);
 
@@ -69,13 +71,13 @@ public class UserController {
 		    userForm.setEmail_confirmed(false);
 		    
 		    // Generate random 36-character string token for confirmation link
-		    	//userForm.setConfirmationToken(UUID.randomUUID().toString());
+		    userForm.setConfirmationToken(UUID.randomUUID().toString());
 		    
 		    userService.save(userForm);
 		    
 		    //Sending verification token via mail
-		    //sendConfirmationMail(request,userForm);
-		    
+		    sendConfirmationMail(request,userForm);
+		    //return "registration";
 		    return "redirect:/confirm";
         }
     }
@@ -166,7 +168,7 @@ public class UserController {
 		registrationEmail.setText("Hi "+userForm.getFirstname()+",\n\nWelcome to RantsRoom! Your portal to rant about anything you like.\n\n"
 				+ "To confirm your e-mail address, please click the link below:\n"
 				+ appUrl + "/verification?token=" + userForm.getConfirmationToken());
-		registrationEmail.setFrom("khan.ssaad@gmail.com");
+		registrationEmail.setFrom("snkp16@gmail.com");
 		
 		emailService.sendEmail(registrationEmail);
 		

@@ -8,7 +8,6 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.rantsroom.model.User;
-import com.rantsroom.model.UserProfile;
 import com.rantsroom.service.UserService;
 
 @Component
@@ -28,7 +27,7 @@ public class FormValidator implements Validator {
         
         //username validation
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "error.usernameEmpty");
-        if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
+        if (user.getUsername().length() < 2 || user.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
         }
         if (userService.findByUsername(user.getUsername()) != null) {

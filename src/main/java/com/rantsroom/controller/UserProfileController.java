@@ -1,5 +1,7 @@
 package com.rantsroom.controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,6 +10,8 @@ import java.nio.file.StandardOpenOption;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Properties;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -44,10 +48,22 @@ public class UserProfileController {
     private UserValidator userValidator;
     @Autowired
     private UserProfileService userProfileService;
+    Properties prop = new Properties();
     
-  //Save the uploaded file to this folder
-    public static String UPLOADED_FOLDER = System.getProperty("user.dir") + "\\src\\main\\webapp\\uploads";
-    
+    //Save the uploaded file to this folder
+    public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "\\src\\main\\webapp\\uploads").toString();    
+   
+	/*
+	 * public UserProfileController() throws IOException {
+	 * 
+	 * FileInputStream inputStream = null;
+	 * 
+	 * try { inputStream = new
+	 * FileInputStream("./resources/application.properties");
+	 * prop.load(inputStream); } catch(FileNotFoundException fnfe) {
+	 * fnfe.printStackTrace(); } catch(IOException ioe) { ioe.printStackTrace(); }
+	 * finally { inputStream.close(); } }
+	 */
     
     @RequestMapping(value = "/users/profile/{username}", method = RequestMethod.GET)
     public String welcome(Model model, Principal principal, @PathVariable String username) {
@@ -186,68 +202,3 @@ public class UserProfileController {
 	
 	
 }
-
-
-/*public String getPath() throws UnsupportedEncodingException {
-public static void main(String[] args) throws UnsupportedEncodingException {
-	
-	LocalDate today = LocalDate.now();
-	System.out.println(today);
-}
-
-			String path = this.getClass().getClassLoader().getResource("").getPath();
-
-			String fullPath = URLDecoder.decode(path, "UTF-8");
-
-			String pathArr[] = fullPath.split("/src/main/webapp/uploads");
-			
-			System.out.println(fullPath);
-
-			System.out.println(pathArr[0]);
-
-			fullPath = pathArr[0];
-
-			String reponsePath = System.getProperty("user.dir") + "\\src\\main\\webapp\\uploads";
-			System.out.println(reponsePath);
-
-			// to read a file from webcontent
-
-			reponsePath = new File(fullPath).getPath() + File.separatorChar + "newfile.txt";
-			return reponsePath;
-
-			}*/
-
-/*String currentUser = null;
-    	try {
-			currentUser = principal.getName();
-			logger.info("CURRENT LOGGED-IN USER: ",currentUser);
-    	} catch (NullPointerException e) {
-			logger.info("No user logged in");
-		}
-    	User user = userService.findByUsername(currentUser);
-    	model.addAttribute("user", user);		
-		
-		
-		if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:uploadStatus";
-        }
-
-        try {
-
-            // Get the file and save it somewhere
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(uploadFolderPath + file.getOriginalFilename());
-            Files.write(path, bytes);
-
-            redirectAttributes.addFlashAttribute("message",
-                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-/* @RequestMapping(value = "/fetch/{id}", method = RequestMethod.GET)
-    String getDynamicUriValue(@PathVariable String id) {
-        System.out.println("ID is " + id);
-        return "Dynamic URI parameter fetched";
-    }*/
