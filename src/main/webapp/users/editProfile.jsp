@@ -204,7 +204,7 @@
                             <label class="col-lg-3 control-label">PASSWORD:</label>
                             <spring:bind path="password">
                                 <div class="col-lg-8 form-group ${status.error ? 'has-error' : ''}">
-                                    <form:input type="password" path="password" class="form-control"></form:input>
+                                    <form:input type="password" path="password" class="form-control" autocomplete="false"></form:input>
                                     <form:errors path="password"></form:errors>
                                 </div>
                             </spring:bind>
