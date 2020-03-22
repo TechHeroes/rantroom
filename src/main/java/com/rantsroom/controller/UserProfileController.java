@@ -51,19 +51,7 @@ public class UserProfileController {
     Properties prop = new Properties();
     
     //Save the uploaded file to this folder
-    public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "/src/main/webapp/uploads").toString();    
-   
-	/*
-	 * public UserProfileController() throws IOException {
-	 * 
-	 * FileInputStream inputStream = null;
-	 * 
-	 * try { inputStream = new
-	 * FileInputStream("./resources/application.properties");
-	 * prop.load(inputStream); } catch(FileNotFoundException fnfe) {
-	 * fnfe.printStackTrace(); } catch(IOException ioe) { ioe.printStackTrace(); }
-	 * finally { inputStream.close(); } }
-	 */
+    public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "/src/main/webapp/uploads").toString();
     
     @RequestMapping(value = "/users/profile/{username}", method = RequestMethod.GET)
     public String welcome(Model model, Principal principal, @PathVariable String username) {
