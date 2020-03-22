@@ -109,13 +109,17 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-configuration-processor</artifactId>
     		<optional>true</optional>
-    	</dependency><!-- 
-    	<dependency>  
-	    	<groupId>javax</groupId>    
-	    	<artifactId>javaee-web-api</artifactId>    
-	    	<version>7.0</version> Put here the version of your Java EE app, in my case 7.0
-	    	<scope>provided</scope> 
-		</dependency>-->
+    	</dependency>
+    	<!-- explicitly added jaxb-api as it's removed from Java 11 onwards-->
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		</dependency>
+    	<dependency>
+		    <groupId>org.javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		    <version>3.25.0-GA</version>
+		</dependency>
     </dependencies>
     <build>
     	<sourceDirectory>src</sourceDirectory>

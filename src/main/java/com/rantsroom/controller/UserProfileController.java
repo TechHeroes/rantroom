@@ -51,7 +51,7 @@ public class UserProfileController {
     Properties prop = new Properties();
     
     //Save the uploaded file to this folder
-    public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "\\src\\main\\webapp\\uploads").toString();    
+    public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "/src/main/webapp/uploads").toString();    
    
 	/*
 	 * public UserProfileController() throws IOException {
@@ -153,7 +153,7 @@ public class UserProfileController {
 				String fileName = principal.getName() +"_"+ LocalDate.now()+"."+arr[arr.length-1];
 				
 				byte[] bytes = file.getBytes();            
-				Path path = Paths.get(UPLOADED_FOLDER+"\\"+fileName);            
+				Path path = Paths.get(UPLOADED_FOLDER+"/"+fileName);            
 				Files.write(path, bytes,StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING );
 				
 				try {
