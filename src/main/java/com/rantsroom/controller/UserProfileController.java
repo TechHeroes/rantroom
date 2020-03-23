@@ -51,12 +51,12 @@ public class UserProfileController {
     Properties prop = new Properties();
     
     //Save the uploaded file to this folder
-    public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "/src/main/webapp/uploads").toString();
+    //public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "/src/main/webapp/uploads").toString();
+    public static String UPLOADED_FOLDER = Paths.get(System.getProperty("user.dir"), "/webapps/ROOT/uploads").toString();  
     
     @RequestMapping(value = "/users/profile/{username}", method = RequestMethod.GET)
-    public String welcome(Model model, Principal principal, @PathVariable String username) {
+    public String welcome(Model model, Principal principal, @PathVariable String username) {    	
     	
-    	System.out.println("Username accessed: "+ username);
     	int authFlag = 0;
     	/**
     	 * Finding logged in User
