@@ -1,6 +1,7 @@
 package com.rantsroom.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class UserProfile {
 	//Profile photo attributes	
 	private String fileName;	
 	
-	@OneToOne
+	@OneToOne(orphanRemoval = false, fetch = FetchType.LAZY)
 	private User user;	
 
 	public Long getId() {

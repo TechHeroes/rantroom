@@ -24,8 +24,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rantsroom.model.Rant;
 import com.rantsroom.model.User;
+import com.rantsroom.repository.LikeRepository;
 import com.rantsroom.repository.UserRepository;
 import com.rantsroom.service.EmailService;
+import com.rantsroom.service.LikeService;
 import com.rantsroom.service.RantService;
 import com.rantsroom.service.UserService;
 import com.rantsroom.validator.UserValidator;
@@ -44,7 +46,10 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
     @Autowired
-    private RantService rantService;
+    private RantService rantService;    
+    @Autowired
+    private LikeRepository likeRepository;
+    
     
     DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     
@@ -124,10 +129,10 @@ public class UserController {
 		} catch (Exception e) {
 			logger.info("No user logged in");
 		}    	
-    	model.addAttribute("user", user);    	
     	List<Rant> rants = rantService.findAll();
-		
     	
+		model.addAttribute("user", user);    	
+		model.addAttribute("likeRepo", likeRepository);
     	model.addAttribute("rants", rants);
     	model.addAttribute("year", currentYear);    	
     	

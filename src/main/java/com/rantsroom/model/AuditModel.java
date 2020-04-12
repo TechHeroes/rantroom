@@ -22,7 +22,7 @@ import java.util.Date;
 public abstract class AuditModel implements Serializable {
 	
 	
-	transient DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM dd yyyy 'at' hh:mm a");
+	transient DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh 'hours ago'"); //ofPattern("E, MMM dd yyyy 'at' hh:mm a");
 	    
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate

@@ -30,7 +30,7 @@ public class User extends AuditModel{
     
     @OnDelete(action=OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "user", orphanRemoval = true)
-    private List<Rant> rants;
+    private List<Rant> rants;    
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", 
@@ -38,10 +38,13 @@ public class User extends AuditModel{
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
     
-    @OneToOne(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    private UserProfile userProfile;
-    
-    public List<Rant> getRants() {
+    /**
+     * 'fetchtype' in **toMany is Lazy by default while its Eager by default in case of ***ToOne
+     */
+    @OneToOne(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private UserProfile userProfile;  
+
+	public List<Rant> getRants() {
 		return rants;
 	}
 

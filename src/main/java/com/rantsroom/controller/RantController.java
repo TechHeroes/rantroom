@@ -10,9 +10,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.rantsroom.model.Like;
 import com.rantsroom.model.Rant;
 import com.rantsroom.model.User;
 import com.rantsroom.repository.RantRepository;
+import com.rantsroom.service.LikeService;
 import com.rantsroom.service.RantService;
 import com.rantsroom.service.RantServiceImpl;
 import com.rantsroom.service.UserService;
@@ -41,6 +43,9 @@ public class RantController {
     @Autowired
     private RantServiceImpl rantServiceImpl;
     
+    @Autowired
+    private LikeService likeService;
+        
     @RequestMapping(value = "/users/rant", method = RequestMethod.GET)
     public String createRant(Model model, Principal principal) {
     	    
@@ -60,7 +65,7 @@ public class RantController {
     public String createRant(@ModelAttribute("ranttForm") Rant rantform,BindingResult bindingResult, 
     		Model model,Principal principal, RedirectAttributes redirectAttributes) {
 
-    	
+    	Like like = null;
     	User user = userService.findByUsername(principal.getName());
     	model.addAttribute("user", user);
     	rantValidator.validate(rantform, bindingResult);
@@ -71,6 +76,8 @@ public class RantController {
     	else {
         	rantform.setUser(userService.findByUsername(principal.getName()));
 	    	rantService.save(rantform);
+	    	like = new Like(false, user, rantform);	    	    	
+	    	likeService.save(like);
 	    	redirectAttributes.addFlashAttribute("rantstatus", "Success!  Your Rant is posted.");
 	        return "redirect:/rant/"+rantform.getId();
     	}

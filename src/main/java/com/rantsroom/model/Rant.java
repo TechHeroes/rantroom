@@ -1,11 +1,15 @@
 package com.rantsroom.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -33,7 +37,16 @@ public class Rant extends AuditModel {
     @OnDelete(action = OnDeleteAction.CASCADE)
 	@ManyToOne
     private User user;
-	  
+    
+    @OneToOne(mappedBy = "rant")
+    private Like like;
+
+	public Like getLike() {
+		return like;
+	}
+	public void setLike(Like like) {
+		this.like = like;
+	}
 	public User getUser() {
 		return user;
 	}
@@ -67,8 +80,9 @@ public class Rant extends AuditModel {
 	}
 	@Override
 	public String toString() {
-		return "Rants [id=" + id + ", rantTitle=" + rantTitle + ", rantDesc=" + rantDesc + ", deleted=" + deleted
-				+ ", user=" + user + "]";
+		return "Rant [id=" + id + ", rantTitle=" + rantTitle + ", rantDesc=" + rantDesc + ", deleted=" + deleted
+				+ ", user=" + user + ", like=" + like + "]";
 	}
+	
 		
 }

@@ -10,7 +10,6 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.rantsroom.model.User;
-import com.rantsroom.model.UserProfile;
 import com.rantsroom.service.UserService;
 
 @Component
@@ -48,8 +47,6 @@ public class UserValidator implements Validator {
 		if (!validator.isValid(user.getEmail())) {    	  
 			errors.rejectValue("email", "error.email.not.valid","The entered email address is not valid!");
 		}
-		
-        
         
     }
 
@@ -64,11 +61,6 @@ public class UserValidator implements Validator {
     	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
     	if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
     		errors.rejectValue("password", "Size.userForm.password");
-    	}
-    	
-		/*
-		 * if (!user.getPasswordConfirm().equals(user.getPassword())) {
-		 * errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm"); }
-		 */
+    	}    	
     }
 }

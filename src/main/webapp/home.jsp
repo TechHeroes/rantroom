@@ -13,11 +13,11 @@
         <meta name="description" content="Welcome to RantRoom. A public forum for people to rant about anything under the sun. 
         	Here, you can speak your heart out with complete anonymity. So, what are you waiting for? Sign up instantly and start ranting.">
         <meta name="author" content="Saad Khan">
-
         <title>RantRoom | Home</title>
 
         <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
+        <link href="${contextPath}/resources/css/style.css" rel="stylesheet">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!--web-fonts-->
         <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
         <!--favicons -->
@@ -39,7 +39,7 @@
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
         <!--favicons-end -->
-        
+        <script src="https://kit.fontawesome.com/7eac90ac67.js" crossorigin="anonymous"></script>
     </head>
     <body>
 		<header id="header">
@@ -133,20 +133,47 @@
 		                        	<c:forEach  items="${rants}" var ="rantData">
                                         <div class="list col-sm-6 col-md-6">
                                             <div class="list-item" style="">
+                                            	<div class="row">
+	                                            	<div role="button" class="col-sm-1"  style="cursor: pointer;">
+														<canvas class="" height="42" width="42" style="position: absolute; top: -5px; left: -5px; width: 42px; height: 42px;"></canvas>
+														<span class="user_thumb_span " role="link">
+															<img alt="${rantData.getUser().getUsername()} &#39;s profile picture" class="user_thumb_img" src="${contextPath}/uploads/${rantData.getUser().getUserProfile().getFileName()}">
+														</span>
+													</div>
+	                                                <!-- <div class="rantOwner col-sm-11"> 
+		                                                <div style="margin: 0 0 5px"> -->
+		                                                <div class="rantOwner col-sm-11">
+		                                                	<a href="${contextPath}/users/profile/${rantData.getUser().getUsername()}">
+		                                                	${rantData.getUser().getUsername()}</a>
+		                                                </div>
+	                                                <!-- </div> -->
+	                                            </div>    
                                                 <div class="list-content">
-                                                    <h3 class="page-header" id="rantTitle">
+                                                    <h4 class="page-header" id="rantTitle">
+                                                    	${rantData.getId()}
                                                     	<c:set var="shortTitle" value="${fn:substring(rantData.getRantTitle(), 0, 30)}" />
-                                                    	<a href="${contextPath}/rant/${rantData.getId()}">${shortTitle}</a>
-                                                    </h3>
-                                                    <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 130)}" />
+                                                    	<a href="${contextPath}/rant/${rantData.getId()}">
+                                                    		${shortTitle}
+                                                    		<%-- <input type="hidden" id="rId" value="${rantData.getId()}"> --%>
+                                                    	</a>
+                                                    </h4>
+                                                    <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 150)}" />
                                                     <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
                                                 </div><!-- list-content -->
-                                                <div class="rantDate">
-	                                                <p style="margin: 0 0 5px">
-	                                                	<a href="${contextPath}/users/profile/${rantData.getUser().getUsername()}">
-	                                                	${rantData.getUser().getUsername()}</a>
-	                                                </p>
-	                                                <p style="font-style: italic;">${rantData.getUpdatedAt()}</p>                                                
+                                                <div>                                                	
+	                                                <c:choose>
+                                                		<c:when test="${likeRepo.findByRantId(rantData.getId()).getLikeFlag() eq true}">
+		                                                	<i data-mode="1" data-rid="${rantData.getId()}" class="lu fas fa-thumbs-up" style="color:#337ab7;font-size: 1.5em"></i>
+                                                		</c:when>
+                                                		<c:otherwise>	                                                		                                                		
+		                                                	<i  data-mode="-1" data-rid="${rantData.getId()}" class="lu far fa-thumbs-up" style="color:#337ab7;font-size: 1.5em"></i>
+                                                		</c:otherwise>
+	                                                </c:choose>
+                                                </div>
+                                                <div>
+	                                                <p style="font-style: italic;font-size: 10px;margin-top: 12px; ">${rantData.getUpdatedAt()}</p>                                                
+                                                </div>
+                                                <div>  
                                                 </div>
                                             </div><!--list-item -->								
 		                                  </div><!--list -->
@@ -189,5 +216,6 @@
         </footer> 
 		<script src="${contextPath}/resources/js/jquery.min.js"></script>
 		<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+        <script src="${contextPath}/resources/js/like-ajax.js"></script>
     </body>
 </html>
