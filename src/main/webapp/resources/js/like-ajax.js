@@ -1,25 +1,18 @@
 $(document).on('click', '.lu', function(){
 	console.log('***clicked', $(this));
+	$(".lu").prop("disabled", true);  
 	var ele = $(this);
 	var mode = ele.data('mode');
 	var rId = ele.data('rid');
 	console.log("Rant ID: ", rId);
-	//console.log("MODE: ", mode);
 	post_like(ele, mode, rId);
 });
 
 function post_like(e, mode, rId) {
-    
-	//var rantId = document.getElementById('rId').value;
-	//console.log("Rant ID : ",rantId);
-	//stop submit the form, we will post it manually.
-    //event.preventDefault();
-    //$(e).prop("disabled", true);
     var ele=$(e);
 	var parent = ele.parent();
 	var url = "/likes/"+1+"/" + (mode == "1" ? "unlike" :"like");
 	console.log("URL : ",url);
-	console.log("parent value: ",parent);
     $.ajax({
         type: "POST",
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -32,30 +25,24 @@ function post_like(e, mode, rId) {
         success: function () {
             console.log("SUCCESS : ");
 			if(mode == "1"){				
-				parent.html('<i data-mode="-1" data-rid= 1 class="lu far fa-thumbs-up" style="color:#337ab7;font-size: 1.5em" aria-hidden="true"></i>');
-				console.log("inside mode = 1");
-				//ele.removeClass('fas fa-thumbs-up');
-				//ele.addClass('far fa-thumbs-up');
-				//mode = 0;
+				parent.html('<i data-mode="-1" data-rid= "'+rId+'" class="lu far fa-thumbs-up" style="color:#337ab7;font-size: 1.5em" aria-hidden="true"></i>');				
 			}
 			else{
-				parent.html('<i data-mode="1" data-rid= 1 class="lu fas fa-thumbs-up" style="color:#337ab7;font-size: 1.5em" aria-hidden="true"></i>');
-				console.log("inside mode = -1");
-				//ele.removeClass('far fa-thumbs-up');
-				//ele.addClass('fas fa-thumbs-up');
-				//mode = 1;
+				parent.html('<i data-mode="1" data-rid= "'+rId+'" class="lu fas fa-thumbs-up" style="color:#337ab7;font-size: 1.5em" aria-hidden="true"></i>');
 			}	
             
-			//$("#btn-search").prop("disabled", false);            
+			$(".lu").prop("disabled", false);           
             
         },
         error: function (e) {
-			alert("Something went wrong!");
+			alert("Uh Oh! You need to login first!");
             console.log("ERROR : ", e);
-            //$("#unlike-button").prop("disabled", false);
+            $(".lu").prop("disabled", false);
         }
     });
 }    
+
+
 
 //			var element = document.getElementById("like-button");
 //			element.classList.remove("far");

@@ -46,7 +46,7 @@ public class UserProfile {
 
 	@Override
 	public String toString() {
-		return "UserProfile [id=" + id + ", fileName=" + fileName + ", user=" + user + "]";
+		return "UserProfile [id=" + id + ", fileName=" + fileName + ", userName=" + user.getUsername() + "]";
 	}
 	
 }
