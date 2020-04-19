@@ -80,8 +80,8 @@ public class Rant extends AuditModel {
 	}
 	@Override
 	public String toString() {
-		return "Rant [id=" + id + ", rantTitle=" + rantTitle + ", rantDesc=" + rantDesc + ", deleted=" + deleted
-				+ ", username=" + user.getUsername() + ", likeStatus=" + like.getLikeFlag() + "]";
+		return "Rant [id=" + id + ", rantTitle=" + rantTitle + ", rantDesc=" + rantDesc + ", userName=" + user.getUsername() + ", likeStatus=" + like.getLikeFlag() + "]";
+																					  
 	}
 	
 		
