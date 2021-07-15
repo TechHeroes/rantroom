@@ -188,7 +188,7 @@
                         </div>
                         <div class="rant rant-details rant-sm">
                             <h3 class="rantTitle">${rantDesc.getRantTitle()}</h3>
-                            <p class="fa fa-quote-left text-quote-icon text-quote-icon-left" style="margin-bottom: 24px">${rantDesc.getRantDesc()}</p>    
+                            <p class="fa-quote-left text-quote-icon text-quote-icon-left" style="margin-bottom: 24px">${rantDesc.getRantDesc()}</p>    
                         </div> 
                     </c:otherwise>
                 </c:choose> 

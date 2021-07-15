@@ -114,85 +114,40 @@
 			</nav>
 		</header>
         <div id="main">
-            <div class="container" id="sub-content">
-                <div class="row profile">
-                	<c:choose>
-                		<c:when test="${postregistration!=null}">
-		                   <br><p style="font-weight: 500;font-size: 18px;margin-left: 10px">${postregistration}</p>
-                		</c:when>
-                		<c:otherwise>
-		                   <p id="intro">Welcome to RantRoom. A public forum for people to rant about anything under the sun. Here, you can speak your heart out with complete anonymity. So, what are you waiting for? Sign up instantly and start ranting.</p>                                       
-                		</c:otherwise>
-                	</c:choose>                	
-                </div><!-- row --> 
+            <div class="container" id="sub-content">                
                 <div class="row">
-                    <div class="center">
-                    	<div class="clearfix">
-                    		<c:choose>
-		                    	<c:when test="${rants != null}">
-		                        	<c:forEach  items="${rants}" var ="rantData">
-                                        <div class="list col-sm-6 col-md-6">
-                                            <div class="list-item" style="">
-                                            	<div class="row">
-	                                            	<div role="button" class="col-sm-1"  style="cursor: pointer;">
-														<canvas class="" height="42" width="42" style="position: absolute; top: -5px; left: -5px; width: 42px; height: 42px;"></canvas>
-														<span class="user_thumb_span " role="link">
-															<img alt="${rantData.getUser().getUsername()} &#39;s profile picture" class="user_thumb_img" src="${contextPath}/uploads/${rantData.getUser().getUserProfile().getFileName()}">
-														</span>
-													</div>
-	                                                <!-- <div class="rantOwner col-sm-11"> 
-		                                                <div style="margin: 0 0 5px"> -->
-		                                                <div class="rantOwner col-sm-11">
-		                                                	<a href="${contextPath}/users/profile/${rantData.getUser().getUsername()}">
-		                                                	${rantData.getUser().getUsername()}</a>
-		                                                </div>
-	                                                <!-- </div> -->
-	                                            </div>    
-                                                <div class="list-content">
-                                                    <h4 class="page-header" id="rantTitle">
-                                                    	<%-- ${rantData.getId()} --%>
-                                                    	<c:set var="shortTitle" value="${fn:substring(rantData.getRantTitle(), 0, 30)}" />
-                                                    	<a href="${contextPath}/rant/${rantData.getId()}">
-                                                    		${shortTitle}
-                                                    		<%-- <input type="hidden" id="rId" value="${rantData.getId()}"> --%>
-                                                    	</a>
-                                                    </h4>
-                                                    <c:set var="shortDesc" value="${fn:substring(rantData.getRantDesc(), 0, 150)}" />
-                                                    <p><i class="fa fa-quote-left"></i> &nbsp;${shortDesc}....</p>
-                                                </div><!-- list-content -->
-                                                <div>                                                	
-	                                                <c:choose>
-                                                		<c:when test="${likeRepo.findByRantId(rantData.getId()).getLikeFlag() eq true}">
-		                                                	<i data-mode="1" data-rid="${rantData.getId()}" class="lu fas fa-thumbs-up" style="color:#337ab7;font-size: 1.5em"></i>
-                                                		</c:when>
-                                                		<c:otherwise>	                                                		                                                		
-		                                                	<i  data-mode="-1" data-rid="${rantData.getId()}" class="lu far fa-thumbs-up" style="color:#337ab7;font-size: 1.5em"></i>
-                                                		</c:otherwise>
-	                                                </c:choose>
-                                                </div>
-                                                <div>
-	                                                <p style="font-style: italic;font-size: 10px;margin-top: 12px; ">${rantData.getUpdatedAt()}</p>                                                
-                                                </div>
-                                                <div>  
-                                                </div>
-                                            </div><!--list-item -->								
-		                                  </div><!--list -->
-		                            </c:forEach> 
-		                             <br />
-		                          </c:when>        		                                
-	                          	<c:otherwise>
-	                              	<div class="list">
-		                                        <div class="list-item" style="">
-		                                            <div class="list-content">
-		                                                <p><i class="fa fa-quote-left"></i> &nbsp;No rants found</p>
-		                                            </div><!-- list-content -->
-		                                        </div><!--list-item -->								
-		                            </div><!-- rants-list -->
-		                            <br />
-		                          </c:otherwise>
-	                        </c:choose>
-	                    </div><!-- clearfix -->		                                
-	                </div><!-- inner row -->                	
+                    <div class="center">								
+						<h4>Your Privacy</h4>
+						<p>Your <b>anonymity </b>is of primary importance to us. We do not sell information about you to anyone or any organization for any reason whatsoever.</p>
+						
+						<h4>Submissions</h4>
+						<p>
+						All materials submitted, posted or shown by users of this web site becomes, on submission, the property of RantRoom.com and is free of any claims of proprietary or personal rights. RantRoom.com reserves the present and future right to post, publish or otherwise disseminate these materials on this site or in any existing or future media as the sole copyright holder and owner of all publication and ownership rights without possible claims of ownership from any parties that have used this website and/or its services.
+						</p>
+						
+						<h4>Conditions of Use</h4>
+						<p>You agree that you shall not use RantRoom.com in any manner that violates any applicable law, regulation, or term of this Agreement. Specifically, you agree that you will not (I.) access or attempt to access any account that you are not authorized to access, (II.) modify or attempt to modify RantRoom.com in any manner or form, (III.) copy, distribute, or create derivative works based on RantRoom.com, (IV.) exploit RantRoom.com in any unauthorized way whatsoever, including but not limited to, by trespass or burdening network capacity, or (V.) sub-license, sell, resell, or otherwise convey RantRoom.com or any elements thereof.</p><p>When posting rants or comments, including pictures or images, to or through RantRoom.com, you agree that you shall not:</p>
+						<ul>
+						<li>Post content that includes personally-identifying information of yourself or another person.</li>
+						<li>Post images that are sexually explicit or pornographic.</li>
+						<li>Post content that harasses or advocates harassment of another person, or promotes racism, bigotry, hatred or physical harm of any kind against any group or individual.</li>
+						<li>Post content that you know is false or misleading.</li>
+						<li>Post content that promotes illegal activities or conduct that is abusive, threatening, obscene, defamatory or libellous.</li>
+						<li>Post content that violates, or promotes the violation of, the intellectual property rights of any third party.</li>
+						<li>Impersonate any individual.</li>
+						</ul>
+						<p>We reserve the right, in our sole discretion without notice or liability, to review, edit, and/or remove content posted to RantRoom.com.</p><p>We reserve the right at any time to modify or discontinue, temporarily or permanently, RantRoom.com (or any part thereof) with or without notice. We will not be liable to you or to any third party for such modification or discontinuation.</p>
+						
+						<h4>General Disclaimer</h4>
+						<p>RantRoom.com reserves the right to review all rants and comments on the site but does not represent or endorse the accuracy or reliability of any of such content. RantRoom.com reserves that right to edit or delete any post.
+						</p>
+						<p>The information and opinions expressed on the site are not necessarily those of RantRoom.com or its affiliated or related entities or content providers and RantRoom.com makes no representations or warranties regarding that information or those opinions. Furthermore, neither RantRoom.com nor its affiliated or related entities or its content providers are responsible or liable to any person or entity whatsoever (including, without limitation, persons who may use or rely on such data/materials or to whom such data/materials may be furnished) for any loss, damage (whether actual, consequential, punitive or otherwise), injury, claim, liability or other cause of any kind or character whatsoever based upon or resulting from any information or opinions provided on RantRoom.com's Web Site.
+						</p>
+						<p>We reserve the right to employ IP blocking or any other means to ban anyone we deem to be offensive and or inappropriate from selected parts or the whole of this website.
+						</p>
+						<h4>YOUR ACCEPTANCE OF THESE TERMS</h4>
+						<p>By using this site, you signify your assent to the RantRoom.com Legal Notice and Privacy Policy. If you do not agree to these terms, please do not use our site. Your continued use of the RantRoom.com website following the posting of changes to these terms will mean you accept those changes.</p>			
+					</div>             	
                 </div>  <!-- row -->
          	</div> <!-- /container -->         
         </div><!-- main -->        

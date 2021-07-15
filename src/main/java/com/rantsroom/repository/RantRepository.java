@@ -17,4 +17,10 @@ public interface RantRepository extends JpaRepository<Rant, Long> {
 	List<Rant> findByUser(User user);
 	List<Rant> findAll();
 	Optional<Rant> findById(Long Id);
+	List<Rant> findAllById(Long Id);
+	
+//	List<Tutorial> tutorials =
+//    tutorialRepository.findAll(Sort.by("published").descending());
+	
+	
 }

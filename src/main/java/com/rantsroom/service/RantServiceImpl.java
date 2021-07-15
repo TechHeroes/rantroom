@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.rantsroom.model.Rant;
@@ -12,7 +13,7 @@ import com.rantsroom.repository.RantRepository;
 import com.rantsroom.repository.RantRepositoryImpl;
 
 @Service
-public class RantServiceImpl extends RantRepositoryImpl implements RantService {
+public class RantServiceImpl implements RantService {
 
 	@Autowired
 	private RantRepository rantRepository;
@@ -41,7 +42,7 @@ public class RantServiceImpl extends RantRepositoryImpl implements RantService {
 	@Override
 	public List<Rant> findAllById(Long Id) {
 		// TODO Auto-generated method stub
-		return super.findAllById(Id);
+		return rantRepository.findAllById(Id);
 	}
 
 	@Override
@@ -54,6 +55,12 @@ public class RantServiceImpl extends RantRepositoryImpl implements RantService {
 	public List<Rant> findByUser(User user) {
 		// TODO Auto-generated method stub
 		return rantRepository.findByUser(user);
+	}
+
+	@Override
+	public List<Rant> findAll(Sort by) {
+		// TODO Auto-generated method stub
+		return rantRepository.findAll(by);
 	}
 	
 }

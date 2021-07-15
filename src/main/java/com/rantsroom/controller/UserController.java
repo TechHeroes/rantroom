@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,6 +56,7 @@ public class UserController {
     DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     
     public static int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
@@ -116,6 +119,7 @@ public class UserController {
 		}
         return "login";
     }   
+    
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
     public String home(Model model, Principal principal) {//, @AuthenticationPrincipal UserDetails currentUser) {    	
     	
@@ -129,7 +133,8 @@ public class UserController {
 		} catch (Exception e) {
 			logger.info("No user logged in");
 		}    	
-    	List<Rant> rants = rantService.findAll();
+    	//List<Rant> rants = rantService.findAll();
+    	List<Rant> rants = rantService.findAll(Sort.by(Direction.DESC,"createdAt"));
     	
 		model.addAttribute("user", user);    	
 		model.addAttribute("likeRepo", likeRepository);
@@ -137,6 +142,26 @@ public class UserController {
     	model.addAttribute("year", currentYear);    	
     	
         return "home";
+    }
+
+    @RequestMapping(value = "/rules", method = RequestMethod.GET)
+    public String rules(Model model, Principal principal) {  	
+    	
+    	User user = null;
+    	/**
+    	 * Finding logged in User
+    	 */
+    	try {
+    		logger.info("CURRENT LOGGED-IN USER: ",principal.getName());
+    		user = userService.findByUsername(principal.getName());			
+    	} catch (Exception e) {
+    		logger.info("No user logged in");
+    	}    	
+    	
+    	model.addAttribute("user", user);
+    	model.addAttribute("year", currentYear);    	
+    	
+    	return "rules";
     }
     
     @RequestMapping(value = "/confirm", method = RequestMethod.GET)

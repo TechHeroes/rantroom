@@ -23,15 +23,19 @@ public class Rant extends AuditModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
+	
 	@NotNull
     @Size(max = 100)
-    private String rantTitle;	
+    private String rantTitle;
+	
 	@NotNull
     @Lob
-	private String rantDesc;	
+	private String rantDesc;
+	
 	private boolean deleted;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -40,6 +44,7 @@ public class Rant extends AuditModel {
     
     @OneToOne(mappedBy = "rant")
     private Like like;
+    
 
 	public Like getLike() {
 		return like;

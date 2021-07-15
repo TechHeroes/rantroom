@@ -101,7 +101,7 @@ body{
   background-image: none;
 /*  border: 1px solid #e5e6e7;*/
   border-radius: 1px;
-  color:;
+  /* color:; */
   display: block;
   padding: 6px 2 12px;
   font-size: 14px;
@@ -117,7 +117,7 @@ body{
     display: block;
     border: 2px solid #ccc;
 }
-}
+
 ::-webkit-input-placeholder{
 	color:#ccc !important;
     text-align: left;
@@ -137,7 +137,7 @@ body{
 	
 }
 
-}
+
 .home-links{
     text-align: center;
     cursor: pointer;
@@ -393,13 +393,18 @@ h5 {
 }
 
 /* Like Rant - End */
+.center {
+  margin: auto;
+  width: 90%;
+ /*  border: 3px solid #73AD21; */
+  padding: 10px;
+}
 
-
-
+/* 
 @media (min-width: 40em)
 .list-item {
     width: 50%;
-}
+} */
 
 
 

@@ -20,5 +20,4 @@ public class RantRepositoryImpl{
 		return rants;		
 	}
 	
-
 }
