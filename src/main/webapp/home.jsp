@@ -136,8 +136,18 @@
                                             	<div class="row">
 	                                            	<div role="button" class="col-sm-1"  style="cursor: pointer;">
 														<canvas class="" height="42" width="42" style="position: absolute; top: -5px; left: -5px; width: 42px; height: 42px;"></canvas>
-														<span class="user_thumb_span " role="link">
-															<img alt="${rantData.getUser().getUsername()} &#39;s profile picture" class="user_thumb_img" src="${contextPath}/uploads/${rantData.getUser().getUserProfile().getFileName()}">
+														<span class="user_thumb_span " role="link">															
+															<c:choose>
+														    	<c:when test="${rantData.getUser().getUserProfile().getFileName()!=null}">
+													    			<img alt="${rantData.getUser().getUsername()} &#39;s profile picture" src="${contextPath}/uploads/${rantData.getUser().getUserProfile().getFileName()}" class="user_thumb_img" 
+													    			>						    		
+														    	</c:when>
+														    	<c:otherwise>
+														    		<img src="${contextPath}/resources/images/no-dp-boy.jpg" class="user_thumb_img" alt="avatar">
+														    	</c:otherwise>
+													    	</c:choose>															
+															<%-- <img alt="${rantData.getUser().getUsername()} &#39;s profile picture" class="user_thumb_img" 
+															src="${contextPath}/uploads/${rantData.getUser().getUserProfile().getFileName()}"> --%>
 														</span>
 													</div>
 	                                                <!-- <div class="rantOwner col-sm-11"> 
@@ -150,11 +160,7 @@
 	                                            </div>    
                                                 <div class="list-content">
                                                     <h4 class="page-header" id="rantTitle">
-<<<<<<< HEAD
-                                                    	<%-- ${rantData.getId()} --%>
-=======
->>>>>>> 6bbf7d4549a92a6b67b17785bc990ee8cd60c19f
-                                                    	<c:set var="shortTitle" value="${fn:substring(rantData.getRantTitle(), 0, 30)}" />
+                                                    	<c:set var="shortTitle" value="${fn:substring(rantData.getRantTitle(), 0, 50)}" />
                                                     	<a href="${contextPath}/rant/${rantData.getId()}">
                                                     		${shortTitle}
                                                     		<%-- <input type="hidden" id="rId" value="${rantData.getId()}"> --%>
