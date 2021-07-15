@@ -150,7 +150,10 @@
 	                                            </div>    
                                                 <div class="list-content">
                                                     <h4 class="page-header" id="rantTitle">
+<<<<<<< HEAD
                                                     	<%-- ${rantData.getId()} --%>
+=======
+>>>>>>> 6bbf7d4549a92a6b67b17785bc990ee8cd60c19f
                                                     	<c:set var="shortTitle" value="${fn:substring(rantData.getRantTitle(), 0, 30)}" />
                                                     	<a href="${contextPath}/rant/${rantData.getId()}">
                                                     		${shortTitle}

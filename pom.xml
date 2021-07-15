@@ -110,7 +110,7 @@
     		<artifactId>spring-boot-configuration-processor</artifactId>
     		<optional>true</optional>
     	</dependency>
-    	<!-- explicitly added jaxb-api as it's removed from Java 11 onwards
+    	<!-- explicitly added jaxb-api as it's removed from Java 11 onwards -->
 		<dependency>
 		    <groupId>javax.xml.bind</groupId>
 		    <artifactId>jaxb-api</artifactId>
@@ -119,7 +119,7 @@
 		    <groupId>org.javassist</groupId>
 		    <artifactId>javassist</artifactId>
 		    <version>3.25.0-GA</version>
-		</dependency>-->
+		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
 		<dependency>
