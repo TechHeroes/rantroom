@@ -29,13 +29,11 @@ import com.rantsroom.model.User;
 import com.rantsroom.repository.LikeRepository;
 import com.rantsroom.repository.UserRepository;
 import com.rantsroom.service.EmailService;
-import com.rantsroom.service.LikeService;
 import com.rantsroom.service.RantService;
 import com.rantsroom.service.UserService;
 import com.rantsroom.validator.UserValidator;
 
 @Controller
-//@RequestMapping("/users")
 public class UserController {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -51,7 +49,7 @@ public class UserController {
     private RantService rantService;    
     @Autowired
     private LikeRepository likeRepository;
-    
+
     
     DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     
@@ -64,15 +62,15 @@ public class UserController {
         return "registration";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult,
     		Model model, HttpServletRequest request) {
     	
     	userValidator.validate(userForm, bindingResult);
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors())
             return "registration";
-        }
+        
         else {
         	// Disable user until they click on confirmation link in email
 		    userForm.setActive(false);
@@ -139,7 +137,7 @@ public class UserController {
 		model.addAttribute("user", user);    	
 		model.addAttribute("likeRepo", likeRepository);
     	model.addAttribute("rants", rants);
-    	model.addAttribute("year", currentYear);    	
+    	model.addAttribute("year", currentYear);
     	
         return "home";
     }
@@ -191,7 +189,7 @@ public class UserController {
     private void sendConfirmationMail(HttpServletRequest request, User userForm) {
 		
     	String appUrl = request.getScheme() + "://" + request.getServerName()+":"+request.getServerPort();
-		
+    	
 		SimpleMailMessage registrationEmail = new SimpleMailMessage();
 		registrationEmail.setTo(userForm.getEmail());
 		registrationEmail.setSubject("RantsRoom Registration Confirmation");
