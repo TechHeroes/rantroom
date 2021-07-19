@@ -21,7 +21,11 @@ public class WebApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) throws Exception {
+    	
     	new File(UserProfileController.UPLOADED_FOLDER).mkdir();
+    	
+    	System.setProperty("jasypt.encryptor.password", "encrypSmtpnDB");
+    	
         SpringApplication.run(WebApplication.class, args);
     }
 }

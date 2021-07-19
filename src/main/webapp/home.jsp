@@ -145,9 +145,7 @@
 														    	<c:otherwise>
 														    		<img src="${contextPath}/resources/images/no-dp-boy.jpg" class="user_thumb_img" alt="avatar">
 														    	</c:otherwise>
-													    	</c:choose>															
-															<%-- <img alt="${rantData.getUser().getUsername()} &#39;s profile picture" class="user_thumb_img" 
-															src="${contextPath}/uploads/${rantData.getUser().getUserProfile().getFileName()}"> --%>
+													    	</c:choose>	
 														</span>
 													</div>
 	                                                <!-- <div class="rantOwner col-sm-11"> 
